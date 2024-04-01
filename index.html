@@ -30,11 +30,11 @@
     </div>
     <script>
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Builds.loader.js";
+      var loaderUrl = buildUrl + "/WebGl.loader.js";
       var config = {
-        dataUrl: buildUrl + "/Builds.data",
-        frameworkUrl: buildUrl + "/Builds.framework.js",
-        codeUrl: buildUrl + "/Builds.wasm",
+        dataUrl: buildUrl + "/WebGl.data",
+        frameworkUrl: buildUrl + "/WebGl.framework.js",
+        codeUrl: buildUrl + "/WebGl.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Mai Labs Pvt Ltd",
         productName: "Mai Experince Center",
@@ -79,8 +79,8 @@
       //   enterARButton.disabled = !event.detail.supported;
       // }, false);
       document.addEventListener('onVRSupportedCheck', function (event) {
-        enterVRButton.disabled = false;//!event.detail.supported;
-      }, true);
+        enterVRButton.disabled = !event.detail.supported;
+      }, false);
 
       // enterARButton.addEventListener('click', function (event) {
       //   unityInstance.Module.WebXR.toggleAR();
