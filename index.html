@@ -72,23 +72,39 @@
       };
       document.body.appendChild(script);
 
+      function DeviceIsMobile() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        var mobilePattern = /android|iphone|ipad|ipod/i;
+
+        return ua.search(mobilePattern) !== -1 || (ua.indexOf("macintosh") !== -1 && "ontouchend" in document);
+      }
+
       // let enterARButton = document.getElementById('enterar');
       let enterVRButton = document.getElementById('entervr');
 
-      // document.addEventListener('onARSupportedCheck', function (event) {
-      //   enterARButton.disabled = !event.detail.supported;
-      // }, false);
-      document.addEventListener('onVRSupportedCheck', function (event) {
-        enterVRButton.disabled = !event.detail.supported;
-      }, false);
+      if(DeviceIsMobile())
+      {
+        enterVRButton.remove();
+        enterARButton.remove();
+      }
+      else
+      {
+        // document.addEventListener('onARSupportedCheck', function (event) {
+        //   enterARButton.disabled = !event.detail.supported;
+        // }, false);
+        document.addEventListener('onVRSupportedCheck', function (event) {
+          enterVRButton.disabled = !event.detail.supported;
+        }, false);
 
-      // enterARButton.addEventListener('click', function (event) {
-      //   unityInstance.Module.WebXR.toggleAR();
-      // }, false);
-      enterVRButton.addEventListener('click', function (event) {
-        unityInstance.SendMessage('GameManager', 'ToggleVR');
-        unityInstance.Module.WebXR.toggleVR();
-      }, false);
+        // enterARButton.addEventListener('click', function (event) {
+        //   unityInstance.Module.WebXR.toggleAR();
+        // }, false);
+        enterVRButton.addEventListener('click', function (event) {
+          unityInstance.SendMessage('GameManager', 'ToggleVR');
+          unityInstance.Module.WebXR.toggleVR();
+        }, false);
+      }
+      console.error(DeviceIsMobile());
     </script>
   </body>
 </html>
