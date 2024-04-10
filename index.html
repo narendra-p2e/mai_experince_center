@@ -70,14 +70,13 @@
           alert(message);
         });
       };
-      document.body.appendChild(script);
-
-      function isMobileDevice() {
+      var isMobileDevice = function () {
         var ua = window.navigator.userAgent.toLowerCase();
         var mobilePattern = /android|iphone|ipad|ipod/i;
 
         return ua.search(mobilePattern) !== -1 || (ua.indexOf("macintosh") !== -1 && "ontouchend" in document);
       }
+      document.body.appendChild(script);
 
       // let enterARButton = document.getElementById('enterar');
       let enterVRButton = document.getElementById('entervr');
@@ -104,7 +103,6 @@
           unityInstance.Module.WebXR.toggleVR();
         }, false);
       }
-      console.error(isMobileDevice());
     </script>
   </body>
 </html>
