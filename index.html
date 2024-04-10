@@ -72,7 +72,7 @@
       };
       document.body.appendChild(script);
 
-      function DeviceIsMobile() {
+      var isMobile = function () {
         var ua = window.navigator.userAgent.toLowerCase();
         var mobilePattern = /android|iphone|ipad|ipod/i;
 
@@ -82,7 +82,7 @@
       // let enterARButton = document.getElementById('enterar');
       let enterVRButton = document.getElementById('entervr');
 
-      if(DeviceIsMobile())
+      if(isMobile())
       {
         enterVRButton.remove();
         enterARButton.remove();
@@ -104,7 +104,7 @@
           unityInstance.Module.WebXR.toggleVR();
         }, false);
       }
-      console.error(DeviceIsMobile());
+      console.error(isMobile());
     </script>
   </body>
 </html>
